@@ -27,6 +27,7 @@ const loginUser = async (req, res, next) => {
   }
 };
 const RegisterUser = async (req, res, next) => {
+  //add error handling m
   const { username, email, password } = req.body;
   const hashPass = bcrypt.hashSync(password, 10);
   try {
