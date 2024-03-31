@@ -22,6 +22,10 @@ const blogSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: [String], // Array of strings
+      required: true,
+    },
   },
   {
     timestamps: true,
