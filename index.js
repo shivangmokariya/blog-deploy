@@ -15,7 +15,7 @@ app.use(cookieParser());
 app.use(
   cors({
     credentials: true,
-    origin: "*",
+    origin: "https://new-blog-rose-five.vercel.app/",
   })
 );
 app.use("/api/auth", AuthRouter);
