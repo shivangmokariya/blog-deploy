@@ -43,8 +43,17 @@ const RegisterUser = async (req, res, next) => {
   const { username, email, password } = req.body;
   const hashPass = bcrypt.hashSync(password, 10);
   try {
+    const existingUser = await User.findOne({ $or: [{ username }, { email }] });
+    if (existingUser) {
+      return next(errorHandler(400, "Username or email already exists"));
+    }
+
+    if (!username || !email || !password) {
+      next(errorHandler(500, "Enter all the fields"));
+    }
+
     const user = await User.create({ username, email, password: hashPass });
-    res.status(201).json({data:user});
+    res.status(201).json({ data: user });
   } catch (error) {
     next(error);
   }

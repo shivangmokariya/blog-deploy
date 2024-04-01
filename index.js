@@ -11,11 +11,11 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-
+// hello
 app.use(
   cors({
-    credentials: true, 
-    origin: '*',
+    credentials: true,
+    origin: "https://new-blog-rose-five.vercel.app", // No trailing slash
   })
 );
 app.use("/api/auth", AuthRouter);
@@ -28,7 +28,7 @@ mongoose
     console.log("connected to mongo database");
   })
   .catch((err) => {
-    console.log("server error");
+    console.log("server error", err);
   });
 
 app.listen(8000, () => {
